@@ -27,7 +27,7 @@ class Calculator {
   console.log(calculator.divide(6, 3));   // Output: 2
 
   // FILEPATH: /workspaces/skills-copilot-codespaces-vscode-ShawnYu/test.js
-const { add } = require('./your-file-name'); // replace 'your-file-name' with the actual file name
+const { add } = require('./test.js'); // replace 'your-file-name' with the actual file name
 
 describe('add', () => {
   test('adds 1 + 2 to equal 3', () => {

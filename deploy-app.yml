@@ -1,0 +1,27 @@
+deploy-app.yml:
+  - name: deploy-app
+    on:
+      push:
+        branches:
+          - master
+    jobs:
+      - name: deploy-app
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v2
+          - name: Set up Node.js
+            uses: actions/setup-node@v1
+            with:
+              node-version: '14'
+          - name: Install dependencies
+            run: npm install
+          - name: Build
+            run: npm run build
+          - name: Deploy
+            run: |
+              mkdir -p ~/.ssh/
+              echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+              chmod 600 ~/.ssh/id_rsa
+              ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+              git clone
